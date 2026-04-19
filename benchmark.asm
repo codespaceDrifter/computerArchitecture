@@ -32,6 +32,7 @@ DONE:
 
 ; ===== Version 2: with ADDV =====
 ; ADDV needs xrd = n-1
+; r1 = n
 
 V2_START:
     INC  r4, r1, -1         ; r4 = n-1
@@ -39,6 +40,3 @@ V2_START:
     NOP
 
 
-; perf notes:
-; V1: ~10 instr per iter + 2 setup  -> ~10n + 4 dynamic
-; V2: 2 instr total, ADDV does n loads/adds/stores internally
