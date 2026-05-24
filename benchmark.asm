@@ -9,14 +9,21 @@
 V1_START:
     SVPC r10, LOOP_TOP      ; grab loop addr (no branch-to-imm in ISA)
     SVPC r11, DONE
+    NOP
 
 LOOP_TOP:
     INC  r1, r1, 0          ; set Z flag on counter
     BRZ  r11                ; done if counter == 0
-
+    NOP
+    NOP
+    
     LD   r20, r2            ; a[i]
     LD   r21, r3            ; b[i]
+    NOP
+    NOP
     ADD  r22, r20, r21
+    NOP
+    NOP
     ST   r22, r2            ; a[i] = sum
 
     INC  r2,  r2,  1        ; pa++
@@ -25,6 +32,8 @@ LOOP_TOP:
 
     SUB  r23, r23, r23      ; force Z=1 for uncond branch
     BRZ  r10                ; jump to LOOP_TOP
+    NOP
+    NOP
 
 DONE:
     NOP
@@ -36,6 +45,8 @@ DONE:
 
 V2_START:
     INC  r4, r1, -1         ; r4 = n-1
+    NOP
+    NOP
     ADDV r4, r2, r3
     NOP
 
